@@ -1,4 +1,5 @@
 ﻿using System;
+using BiesPro.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BiesPro.Data
@@ -12,6 +13,12 @@ namespace BiesPro.Data
         public BiesProContext(DbContextOptions options)
         {
         }
+
+        DbSet<Address> Addresses { get; set; }
+        DbSet<ClientOrVendor> ClientOrVendors { get; set; }
+        DbSet<Municipality> Municipalities { get; set; }
+        DbSet<Person> Persons { get; set; }
+        DbSet<Town> Towns { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
