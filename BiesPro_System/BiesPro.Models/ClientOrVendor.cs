@@ -18,6 +18,7 @@ namespace BiesPro.Models
         public int DeliveryAddressId { get; set; }
         public Address DeliveryAddress { get; set; }
 
+        public int PersonId { get; set; }
         public Person ContactPerson { get; set; }
     }
 }

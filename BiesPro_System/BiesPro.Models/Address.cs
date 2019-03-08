@@ -4,6 +4,12 @@ namespace BiesPro.Models
 {
     public class Address
     {
+        public Address()
+        {
+            this.Persons = new List<Person>();
+            this.ClientOrVendors = new List<ClientOrVendor>();
+        }
+
         public int AddressId { get; set; }
 
         public string AddressText { get; set; }
@@ -15,6 +21,5 @@ namespace BiesPro.Models
         public ICollection<Person> Persons { get; set; }
 
         public ICollection<ClientOrVendor> ClientOrVendors { get; set; }
-
     }
 }
