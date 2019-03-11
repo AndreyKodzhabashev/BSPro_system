@@ -1,10 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-namespace BiesPro.Data.EntityConfiguration
-
+﻿namespace BiesPro.Data.EntityConfiguration
 {
-    using BiesPro.Models;
+    using Models;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
     public class AddressConfig : IEntityTypeConfiguration<Address>
     {
@@ -19,7 +17,8 @@ namespace BiesPro.Data.EntityConfiguration
 
             builder.HasOne(a => a.Town)
                 .WithMany(t => t.Addresses)
-                .HasForeignKey(a => a.TownId);
+                .HasForeignKey(a => a.TownId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
