@@ -10,7 +10,7 @@ namespace BiesPro.Data
         {
         }
 
-        public BiesProContext(DbContextOptions options)
+        public BiesProContext(DbContextOptions options):base(options)
         {
         }
 
@@ -27,6 +27,7 @@ namespace BiesPro.Data
             {
                 throw new NotImplementedException("Connection string is not set!!");
                 optionsBuilder.UseSqlServer("Connection string");
+                //here will be used the PostdGreSQL service provider
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using System.Net.Sockets;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Net.Sockets;
 
 namespace BiesPro.Models
 {
@@ -18,7 +19,7 @@ namespace BiesPro.Models
         public int DeliveryAddressId { get; set; }
         public Address DeliveryAddress { get; set; }
 
-        public int PersonId { get; set; }
-        public Person ContactPerson { get; set; }
+        [InverseProperty("ClientOrVendor")]
+       public Person ContactPerson { get; set; }
     }
 }

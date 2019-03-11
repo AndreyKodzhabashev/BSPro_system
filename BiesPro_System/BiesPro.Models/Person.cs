@@ -1,5 +1,7 @@
 ﻿namespace BiesPro.Models
 {
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public class Person
     {
         public int PersonId { get; set; }
@@ -11,16 +13,13 @@
         public string EGN { get; set; }
 
         public string PhoneNumber { get; set; }
-        
-
-        //navigation properties
-        public int AddressId { get; set; }
-        public Address Address { get; set; }
 
 
-        //TODO - i am not sure if the ClientOrVendorId is not obsolete, as we have one to one relationship. 
-        
+        //nav property one-to-one with the corresponding ClientOrVendor
         public int ClientOrVendorId { get; set; }
+
+        [ForeignKey(nameof(ClientOrVendorId))]
+        [InverseProperty("ContactPerson")]
         public ClientOrVendor ClientOrVendor { get; set; }
     }
 }
