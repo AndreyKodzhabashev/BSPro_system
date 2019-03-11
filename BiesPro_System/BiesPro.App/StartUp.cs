@@ -6,6 +6,7 @@ namespace BiesPro.App
     {
         public static void Main(string[] args)
         {
+            //added comment for test
         }
     }
 }
