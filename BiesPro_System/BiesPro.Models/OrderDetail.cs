@@ -1,9 +1,14 @@
 ﻿namespace BiesPro.Models
 {
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public class OrderDetail
     {
-        public int PurchaseDetailsId { get; set; }
+        public int OrderDetailId { get; set; }
 
-        public string Text { get; set; }
+        public string Description { get; set; }
 
-        //nav propO
+        //nav prop
+        [InverseProperty("OrderDetail")] public Order Order { get; set; }
+    }
+}

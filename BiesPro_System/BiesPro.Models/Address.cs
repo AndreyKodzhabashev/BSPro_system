@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
-
-namespace BiesPro.Models
+﻿namespace BiesPro.Models
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public class Address
     {
         public Address()
@@ -21,5 +22,7 @@ namespace BiesPro.Models
         public ICollection<Person> Persons { get; set; }
 
         public ICollection<ClientOrVendor> ClientOrVendors { get; set; }
+
+        [InverseProperty("DeliveryAddress")] public Order Order { get; set; }
     }
 }
