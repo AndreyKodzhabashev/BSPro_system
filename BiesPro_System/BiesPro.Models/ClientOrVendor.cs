@@ -1,6 +1,7 @@
 ﻿namespace BiesPro.Models
 {
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Collections.Generic;
 
     public class ClientOrVendor
     {
@@ -17,13 +18,9 @@
         [InverseProperty("ClientOrVendors")]
         public Address Address { get; set; }
 
-        //also to table Addresses but to different AddressId
-        public int DeliveryAddressId { get; set; }
-        public Address DeliveryAddress { get; set; }
-
         [InverseProperty("ClientOrVendor")] public Person ContactPerson { get; set; }
 
-        [InverseProperty("Client")] public Order OrderClient { get; set; }
-        [InverseProperty("Vendor")] public Order OrderVendor { get; set; }
+        [InverseProperty("Client")] public ICollection<Order> OrderClient { get; set; } = new List<Order>();
+        [InverseProperty("Vendor")] public ICollection<Order> OrderVendor { get; set; } = new List<Order>();
     }
 }

@@ -21,4 +21,4 @@
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }
-}
+}//Cannot create a relationship between 'Address.ClientOrVendors' and 'ClientOrVendor.DeliveryAddress', because there already is a relationship between 'Address.ClientOrVendors' and 'ClientOrVendor.Address'. Navigation properties can only participate in a single relationship.

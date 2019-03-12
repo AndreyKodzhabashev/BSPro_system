@@ -32,7 +32,8 @@
                 .IsUnicode(false);
 
             builder.HasOne(p => p.ClientOrVendor)
-                .WithOne(cv => cv.ContactPerson);
+                .WithOne(cv => cv.ContactPerson)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

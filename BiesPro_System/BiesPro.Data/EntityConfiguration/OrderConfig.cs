@@ -11,16 +11,20 @@
             builder.HasKey(e => e.OrderId);
 
             builder.HasOne(o => o.Vendor)
-                .WithOne(cv => cv.OrderVendor);
+                .WithMany(cv => cv.OrderVendor)
+                .OnDelete(DeleteBehavior.Restrict);
             
             builder.HasOne(o => o.Client)
-                .WithOne(cv => cv.OrderClient);
+                .WithMany(cv => cv.OrderClient)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(o => o.DeliveryAddress)
-                .WithOne(a => a.Order);
+                .WithOne(a => a.Order)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(o => o.OrderDetails)
-                .WithOne(od => od.Order);
+                .WithOne(od => od.Order)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

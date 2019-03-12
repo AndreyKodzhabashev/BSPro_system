@@ -22,14 +22,12 @@
 
             builder.HasOne(cv => cv.Address)
                 .WithMany(a => a.ClientOrVendors)
-                .HasForeignKey(cv => cv.AddressId);
-
-            builder.HasOne(cv => cv.DeliveryAddress)
-                .WithMany(a => a.ClientOrVendors)
-                .HasForeignKey(cv => cv.DeliveryAddressId);
+                .HasForeignKey(cv => cv.AddressId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(cv => cv.ContactPerson)
-                .WithOne(p => p.ClientOrVendor);
+                .WithOne(p => p.ClientOrVendor)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

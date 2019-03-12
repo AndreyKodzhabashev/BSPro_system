@@ -17,7 +17,8 @@
 
             builder.HasOne(t => t.Municipality)
                 .WithMany(m => m.Towns)
-                .HasForeignKey(t => t.MunicipalityId);
+                .HasForeignKey(t => t.MunicipalityId)
+                .OnDelete(DeleteBehavior.Restrict);
 
         }
     }
