@@ -1,6 +1,6 @@
 ﻿namespace BiesPro.Data.EntityConfiguration
 {
-    using BiesPro.Models;
+    using Models;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

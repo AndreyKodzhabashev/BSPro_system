@@ -12,6 +12,9 @@
 
         //navigation properties
         public int AddressId { get; set; }
+
+        [ForeignKey(nameof(AddressId))]
+        [InverseProperty("ClientOrVendors")]
         public Address Address { get; set; }
 
         //also to table Addresses but to different AddressId

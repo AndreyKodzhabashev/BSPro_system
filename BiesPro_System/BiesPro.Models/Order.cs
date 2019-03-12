@@ -33,9 +33,9 @@
 
         //navprop
         public int OrderDetailId { get; set; }
-
+        
         [ForeignKey(nameof(OrderDetailId))]
-        [InverseProperty("OrderDetail")]
+        [InverseProperty("Order")]
         public OrderDetail OrderDetails { get; set; }
     }
 }

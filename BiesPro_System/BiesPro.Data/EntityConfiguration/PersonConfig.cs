@@ -1,9 +1,9 @@
-﻿using BiesPro.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-namespace BiesPro.Data.EntityConfiguration
+﻿namespace BiesPro.Data.EntityConfiguration
 {
+    using Models;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
     public class PersonConfig : IEntityTypeConfiguration<Person>
 
     {
@@ -30,7 +30,7 @@ namespace BiesPro.Data.EntityConfiguration
                 .HasMaxLength(20)
                 .IsRequired()
                 .IsUnicode(false);
-            
+
             builder.HasOne(p => p.ClientOrVendor)
                 .WithOne(cv => cv.ContactPerson);
         }

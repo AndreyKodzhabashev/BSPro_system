@@ -9,6 +9,6 @@
         public string Description { get; set; }
 
         //nav prop
-        [InverseProperty("OrderDetail")] public Order Order { get; set; }
+        [InverseProperty("OrderDetails")] public Order Order { get; set; }
     }
 }
