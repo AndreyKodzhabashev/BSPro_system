@@ -30,11 +30,7 @@ namespace BiesPro.Data.EntityConfiguration
                 .HasMaxLength(20)
                 .IsRequired()
                 .IsUnicode(false);
-
-            builder.HasOne(p => p.Address)
-                .WithMany(a => a.Persons)
-                .HasForeignKey(p => p.AddressId);
-
+            
             builder.HasOne(p => p.ClientOrVendor)
                 .WithOne(cv => cv.ContactPerson);
         }

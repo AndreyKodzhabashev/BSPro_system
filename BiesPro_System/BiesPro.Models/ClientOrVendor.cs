@@ -1,8 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Net.Sockets;
-
-namespace BiesPro.Models
+﻿namespace BiesPro.Models
 {
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public class ClientOrVendor
     {
         public int ClientOrVendorId { get; set; }
@@ -19,7 +18,9 @@ namespace BiesPro.Models
         public int DeliveryAddressId { get; set; }
         public Address DeliveryAddress { get; set; }
 
-        [InverseProperty("ClientOrVendor")]
-       public Person ContactPerson { get; set; }
+        [InverseProperty("ClientOrVendor")] public Person ContactPerson { get; set; }
+
+        [InverseProperty("Client")] public Order OrderClient { get; set; }
+        [InverseProperty("Vendor")] public Order OrderVendor { get; set; }
     }
 }
