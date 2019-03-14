@@ -147,18 +147,11 @@ namespace BiesPro.Data.Migrations
                     LastName = table.Column<string>(maxLength: 20, nullable: false),
                     EGN = table.Column<string>(unicode: false, maxLength: 20, nullable: false),
                     PhoneNumber = table.Column<string>(unicode: false, maxLength: 20, nullable: false),
-                    ClientOrVendorId = table.Column<int>(nullable: false),
-                    AddressId = table.Column<int>(nullable: true)
+                    ClientOrVendorId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Persons", x => x.PersonId);
-                    table.ForeignKey(
-                        name: "FK_Persons_Addresses_AddressId",
-                        column: x => x.AddressId,
-                        principalTable: "Addresses",
-                        principalColumn: "AddressId",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Persons_ClientOrVendors_ClientOrVendorId",
                         column: x => x.ClientOrVendorId,
@@ -198,11 +191,6 @@ namespace BiesPro.Data.Migrations
                 name: "IX_Orders_VendorId",
                 table: "Orders",
                 column: "VendorId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Persons_AddressId",
-                table: "Persons",
-                column: "AddressId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Persons_ClientOrVendorId",

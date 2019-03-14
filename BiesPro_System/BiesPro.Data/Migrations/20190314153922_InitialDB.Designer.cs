@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BiesPro.Data.Migrations
 {
     [DbContext(typeof(BiesProContext))]
-    [Migration("20190312092342_InitialDB")]
+    [Migration("20190314153922_InitialDB")]
     partial class InitialDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -136,8 +136,6 @@ namespace BiesPro.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AddressId");
-
                     b.Property<int>("ClientOrVendorId");
 
                     b.Property<string>("EGN")
@@ -161,8 +159,6 @@ namespace BiesPro.Data.Migrations
                         .IsUnicode(false);
 
                     b.HasKey("PersonId");
-
-                    b.HasIndex("AddressId");
 
                     b.HasIndex("ClientOrVendorId")
                         .IsUnique();
@@ -231,10 +227,6 @@ namespace BiesPro.Data.Migrations
 
             modelBuilder.Entity("BiesPro.Models.Person", b =>
                 {
-                    b.HasOne("BiesPro.Models.Address")
-                        .WithMany("Persons")
-                        .HasForeignKey("AddressId");
-
                     b.HasOne("BiesPro.Models.ClientOrVendor", "ClientOrVendor")
                         .WithOne("ContactPerson")
                         .HasForeignKey("BiesPro.Models.Person", "ClientOrVendorId")
