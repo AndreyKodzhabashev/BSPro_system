@@ -7,7 +7,6 @@
     {
         public Address()
         {
-            this.Persons = new List<Person>();
             this.ClientOrVendors = new List<ClientOrVendor>();
         }
 
@@ -19,7 +18,6 @@
         public int TownId { get; set; }
         public Town Town { get; set; }
 
-        public ICollection<Person> Persons { get; set; }
 
         //Unable to determine the relationship represented by navigation property 'Address.ClientOrVendors' of type 'ICollection<ClientOrVendor>'. Either manually configure the relationship, or ignore this property using the '[NotMapped]' attribute or by using 'EntityTypeBuilder.Ignore' in 'OnModelCreating'.
         [InverseProperty("Address")] public ICollection<ClientOrVendor> ClientOrVendors { get; set; }
