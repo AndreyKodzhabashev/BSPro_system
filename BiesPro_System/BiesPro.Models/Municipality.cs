@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace BiesPro.Models
+﻿namespace BiesPro.Models
 {
+    using System.Collections.Generic;
+
     public class Municipality : BaseModel
     {
         public Municipality()

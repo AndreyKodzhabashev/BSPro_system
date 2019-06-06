@@ -1,11 +1,10 @@
 ﻿namespace BiesPro.Data.EntityConfiguration
 {
-    using Models;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
+    using Models;
 
     public class PersonConfig : IEntityTypeConfiguration<Person>
-
     {
         public void Configure(EntityTypeBuilder<Person> builder)
         {

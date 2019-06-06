@@ -1,8 +1,8 @@
 ﻿namespace BiesPro.Data.EntityConfiguration
 {
-    using Models;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
+    using Models;
 
     public class TownConfig : IEntityTypeConfiguration<Town>
     {
@@ -19,7 +19,6 @@
                 .WithMany(m => m.Towns)
                 .HasForeignKey(t => t.MunicipalityId)
                 .OnDelete(DeleteBehavior.Restrict);
-
         }
     }
 }
