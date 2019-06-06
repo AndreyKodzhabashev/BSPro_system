@@ -1,13 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.438
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28922.388
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiesPro.App", "BiesPro.App\BiesPro.App.csproj", "{CEA10834-6F6F-4E36-AF2E-467C2921901A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BiesPro.App", "BiesPro.App\BiesPro.App.csproj", "{CEA10834-6F6F-4E36-AF2E-467C2921901A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiesPro.Data", "BiesPro.Data\BiesPro.Data.csproj", "{9468CEE7-8C1F-4885-8C5D-5CB7D0457E49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BiesPro.Data", "BiesPro.Data\BiesPro.Data.csproj", "{9468CEE7-8C1F-4885-8C5D-5CB7D0457E49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiesPro.Models", "BiesPro.Models\BiesPro.Models.csproj", "{2D0374CD-EA29-4EFE-B96C-FE78C9B696A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BiesPro.Models", "BiesPro.Models\BiesPro.Models.csproj", "{2D0374CD-EA29-4EFE-B96C-FE78C9B696A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiesProWebApp", "BiesProWebApp\BiesProWebApp.csproj", "{0B052E3C-1A9F-4670-99BD-AA1B5B790888}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiesPro.Services", "BiesPro.Services\BiesPro.Services.csproj", "{EF25F0E8-ED57-498C-B627-743DAA1FDDE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{2D0374CD-EA29-4EFE-B96C-FE78C9B696A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D0374CD-EA29-4EFE-B96C-FE78C9B696A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D0374CD-EA29-4EFE-B96C-FE78C9B696A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B052E3C-1A9F-4670-99BD-AA1B5B790888}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B052E3C-1A9F-4670-99BD-AA1B5B790888}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B052E3C-1A9F-4670-99BD-AA1B5B790888}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B052E3C-1A9F-4670-99BD-AA1B5B790888}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF25F0E8-ED57-498C-B627-743DAA1FDDE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF25F0E8-ED57-498C-B627-743DAA1FDDE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF25F0E8-ED57-498C-B627-743DAA1FDDE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF25F0E8-ED57-498C-B627-743DAA1FDDE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

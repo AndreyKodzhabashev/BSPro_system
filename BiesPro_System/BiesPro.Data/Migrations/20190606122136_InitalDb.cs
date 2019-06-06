@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BiesPro.Data.Migrations
 {
-    public partial class InitialDb : Migration
+    public partial class InitalDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -99,7 +99,8 @@ namespace BiesPro.Data.Migrations
                     VendorId = table.Column<long>(nullable: false),
                     ClientId = table.Column<long>(nullable: false),
                     AddressId = table.Column<long>(nullable: false),
-                    OrderDetailsId = table.Column<long>(nullable: false)
+                    OrderDetailsId = table.Column<long>(nullable: false),
+                    IsFinished = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

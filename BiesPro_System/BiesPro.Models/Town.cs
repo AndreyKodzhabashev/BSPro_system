@@ -11,8 +11,9 @@
 
         public string Name { get; set; }
 
-        //navigation properties
+        ////navigation properties
         public uint MunicipalityId { get; set; }
+
         public Municipality Municipality { get; set; }
 
         public ICollection<Address> Addresses { get; set; }

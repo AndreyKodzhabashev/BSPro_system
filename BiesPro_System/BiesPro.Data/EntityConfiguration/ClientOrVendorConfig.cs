@@ -1,8 +1,8 @@
 ﻿namespace BiesPro.Data.EntityConfiguration
 {
-    using Models;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
+    using Models;
 
     public class ClientOrVendorConfig : IEntityTypeConfiguration<ClientOrVendor>
     {

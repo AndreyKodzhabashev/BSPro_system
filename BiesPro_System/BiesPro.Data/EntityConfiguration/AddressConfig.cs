@@ -1,9 +1,9 @@
 ﻿namespace BiesPro.Data.EntityConfiguration
 {
-    using Models;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
+    using Models;
+    
     public class AddressConfig : IEntityTypeConfiguration<Address>
     {
         public void Configure(EntityTypeBuilder<Address> builder)
@@ -21,4 +21,4 @@
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }
-}//Cannot create a relationship between 'Address.ClientOrVendors' and 'ClientOrVendor.DeliveryAddress', because there already is a relationship between 'Address.ClientOrVendors' and 'ClientOrVendor.Address'. Navigation properties can only participate in a single relationship.
+}

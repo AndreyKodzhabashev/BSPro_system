@@ -1,7 +1,7 @@
 ﻿namespace BiesPro.Models
 {
-    using System.ComponentModel.DataAnnotations.Schema;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class ClientOrVendor : BaseModel
     {
@@ -10,11 +10,12 @@
             this.OrderClient = new HashSet<Order>();
             this.OrderVendor = new HashSet<Order>();
         }
+
         public string Name { get; set; }
 
         public string BULSTAT { get; set; }
 
-        //navigation properties
+        //// navigation properties
         public uint AddressId { get; set; }
 
         [ForeignKey(nameof(AddressId))]
@@ -24,6 +25,7 @@
         [InverseProperty("ClientOrVendor")] public Person ContactPerson { get; set; }
 
         [InverseProperty("Client")] public ICollection<Order> OrderClient { get; set; }
+
         [InverseProperty("Vendor")] public ICollection<Order> OrderVendor { get; set; }
     }
 }
