@@ -5,11 +5,11 @@
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 
-    public class OrderDetailConfig : IEntityTypeConfiguration<OrderDetail>
+    public class OrderDetailConfig : IEntityTypeConfiguration<OrderDetails>
     {
-        public void Configure(EntityTypeBuilder<OrderDetail> builder)
+        public void Configure(EntityTypeBuilder<OrderDetails> builder)
         {
-            builder.HasKey(e => e.OrderDetailId);
+            builder.HasKey(e => e.Id);
 
             builder.Property(e => e.Description)
                 .IsRequired()

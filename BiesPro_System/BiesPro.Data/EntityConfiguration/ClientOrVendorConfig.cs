@@ -8,7 +8,7 @@
     {
         public void Configure(EntityTypeBuilder<ClientOrVendor> builder)
         {
-            builder.HasKey(cv => cv.ClientOrVendorId);
+            builder.HasKey(cv => cv.Id);
 
             builder.Property(cv => cv.Name)
                 .HasMaxLength(40)

@@ -2,14 +2,12 @@
 
 namespace BiesPro.Models
 {
-    public class Municipality
+    public class Municipality : BaseModel
     {
         public Municipality()
         {
             this.Towns = new HashSet<Town>();
         }
-
-        public int MunicipalityId { get; set; }
 
         public string Name { get; set; }
 
