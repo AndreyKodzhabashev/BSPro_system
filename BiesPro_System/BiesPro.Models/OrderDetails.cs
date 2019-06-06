@@ -2,9 +2,8 @@
 {
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public class OrderDetail
-    {
-        public int OrderDetailId { get; set; }
+    public class OrderDetails : BaseModel
+    {     
 
         public string Description { get; set; }
 

@@ -8,7 +8,7 @@
     {
         public void Configure(EntityTypeBuilder<Order> builder)
         {
-            builder.HasKey(e => e.OrderId);
+            builder.HasKey(e => e.Id);
 
             builder.HasOne(o => o.Vendor)
                 .WithMany(cv => cv.OrderVendor)

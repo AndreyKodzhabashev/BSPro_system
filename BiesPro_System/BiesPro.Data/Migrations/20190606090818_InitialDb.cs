@@ -1,10 +1,9 @@
 ﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BiesPro.Data.Migrations
 {
-    public partial class InitialDB : Migration
+    public partial class InitialDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,45 +11,42 @@ namespace BiesPro.Data.Migrations
                 name: "Municipalities",
                 columns: table => new
                 {
-                    MunicipalityId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<long>(nullable: false),
                     Name = table.Column<string>(maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Municipalities", x => x.MunicipalityId);
+                    table.PrimaryKey("PK_Municipalities", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "OrdersDetails",
                 columns: table => new
                 {
-                    OrderDetailId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<long>(nullable: false),
                     Description = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrdersDetails", x => x.OrderDetailId);
+                    table.PrimaryKey("PK_OrdersDetails", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Towns",
                 columns: table => new
                 {
-                    TownId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<long>(nullable: false),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
-                    MunicipalityId = table.Column<int>(nullable: false)
+                    MunicipalityId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Towns", x => x.TownId);
+                    table.PrimaryKey("PK_Towns", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Towns_Municipalities_MunicipalityId",
                         column: x => x.MunicipalityId,
                         principalTable: "Municipalities",
-                        principalColumn: "MunicipalityId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -58,19 +54,18 @@ namespace BiesPro.Data.Migrations
                 name: "Addresses",
                 columns: table => new
                 {
-                    AddressId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<long>(nullable: false),
                     AddressText = table.Column<string>(maxLength: 250, nullable: false),
-                    TownId = table.Column<int>(nullable: false)
+                    TownId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Addresses", x => x.AddressId);
+                    table.PrimaryKey("PK_Addresses", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Addresses_Towns_TownId",
                         column: x => x.TownId,
                         principalTable: "Towns",
-                        principalColumn: "TownId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -78,20 +73,19 @@ namespace BiesPro.Data.Migrations
                 name: "ClientOrVendors",
                 columns: table => new
                 {
-                    ClientOrVendorId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<long>(nullable: false),
                     Name = table.Column<string>(maxLength: 40, nullable: false),
                     BULSTAT = table.Column<string>(unicode: false, maxLength: 20, nullable: false),
-                    AddressId = table.Column<int>(nullable: false)
+                    AddressId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ClientOrVendors", x => x.ClientOrVendorId);
+                    table.PrimaryKey("PK_ClientOrVendors", x => x.Id);
                     table.ForeignKey(
                         name: "FK_ClientOrVendors_Addresses_AddressId",
                         column: x => x.AddressId,
                         principalTable: "Addresses",
-                        principalColumn: "AddressId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -99,41 +93,40 @@ namespace BiesPro.Data.Migrations
                 name: "Orders",
                 columns: table => new
                 {
-                    OrderId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<long>(nullable: false),
                     StartDate = table.Column<DateTime>(nullable: true),
                     EndDate = table.Column<DateTime>(nullable: true),
-                    VendorId = table.Column<int>(nullable: false),
-                    ClientId = table.Column<int>(nullable: false),
-                    AddressId = table.Column<int>(nullable: false),
-                    OrderDetailId = table.Column<int>(nullable: false)
+                    VendorId = table.Column<long>(nullable: false),
+                    ClientId = table.Column<long>(nullable: false),
+                    AddressId = table.Column<long>(nullable: false),
+                    OrderDetailsId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Orders", x => x.OrderId);
+                    table.PrimaryKey("PK_Orders", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Orders_Addresses_AddressId",
                         column: x => x.AddressId,
                         principalTable: "Addresses",
-                        principalColumn: "AddressId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Orders_ClientOrVendors_ClientId",
                         column: x => x.ClientId,
                         principalTable: "ClientOrVendors",
-                        principalColumn: "ClientOrVendorId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Orders_OrdersDetails_OrderDetailId",
-                        column: x => x.OrderDetailId,
+                        name: "FK_Orders_OrdersDetails_OrderDetailsId",
+                        column: x => x.OrderDetailsId,
                         principalTable: "OrdersDetails",
-                        principalColumn: "OrderDetailId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Orders_ClientOrVendors_VendorId",
                         column: x => x.VendorId,
                         principalTable: "ClientOrVendors",
-                        principalColumn: "ClientOrVendorId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -141,22 +134,21 @@ namespace BiesPro.Data.Migrations
                 name: "Persons",
                 columns: table => new
                 {
-                    PersonId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<long>(nullable: false),
                     FirstName = table.Column<string>(maxLength: 20, nullable: false),
                     LastName = table.Column<string>(maxLength: 20, nullable: false),
                     EGN = table.Column<string>(unicode: false, maxLength: 20, nullable: false),
                     PhoneNumber = table.Column<string>(unicode: false, maxLength: 20, nullable: false),
-                    ClientOrVendorId = table.Column<int>(nullable: false)
+                    ClientOrVendorId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Persons", x => x.PersonId);
+                    table.PrimaryKey("PK_Persons", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Persons_ClientOrVendors_ClientOrVendorId",
                         column: x => x.ClientOrVendorId,
                         principalTable: "ClientOrVendors",
-                        principalColumn: "ClientOrVendorId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -182,9 +174,9 @@ namespace BiesPro.Data.Migrations
                 column: "ClientId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_OrderDetailId",
+                name: "IX_Orders_OrderDetailsId",
                 table: "Orders",
-                column: "OrderDetailId",
+                column: "OrderDetailsId",
                 unique: true);
 
             migrationBuilder.CreateIndex(

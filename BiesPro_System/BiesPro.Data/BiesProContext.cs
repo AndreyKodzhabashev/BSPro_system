@@ -19,7 +19,7 @@
         public DbSet<ClientOrVendor> ClientOrVendors { get; set; }
         public DbSet<Municipality> Municipalities { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderDetail> OrdersDetails { get; set; }
+        public DbSet<OrderDetails> OrdersDetails { get; set; }
         public DbSet<Person> Persons { get; set; }
         public DbSet<Town> Towns { get; set; }
 

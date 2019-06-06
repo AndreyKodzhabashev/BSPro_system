@@ -3,39 +3,37 @@
     using System;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public class Order
+    public class Order : BaseModel
     {
-        public int OrderId { get; set; }
-
         public DateTime? StartDate { get; set; }
 
         public DateTime? EndDate { get; set; }
 
         //nav prop
-        public int VendorId { get; set; }
+        public uint VendorId { get; set; }
 
         [ForeignKey(nameof(VendorId))]
         [InverseProperty("OrderVendor")]
         public ClientOrVendor Vendor { get; set; }
 
         //navprop
-        public int ClientId { get; set; }
+        public uint ClientId { get; set; }
 
         [ForeignKey(nameof(ClientId))]
         [InverseProperty("OrderClient")]
         public ClientOrVendor Client { get; set; }
 
         //navprop = one order has one delivery address
-        public int AddressId { get; set; }
+        public uint AddressId { get; set; }
         [ForeignKey(nameof(AddressId))]
         [InverseProperty("Order")]
         public Address DeliveryAddress { get; set; }
 
         //navprop
-        public int OrderDetailId { get; set; }
+        public uint OrderDetailsId { get; set; }
         
-        [ForeignKey(nameof(OrderDetailId))]
+        [ForeignKey(nameof(OrderDetailsId))]
         [InverseProperty("Order")]
-        public OrderDetail OrderDetails { get; set; }
+        public OrderDetails OrderDetails { get; set; }
     }
 }

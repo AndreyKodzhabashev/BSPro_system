@@ -3,16 +3,19 @@
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Collections.Generic;
 
-    public class ClientOrVendor
+    public class ClientOrVendor : BaseModel
     {
-        public int ClientOrVendorId { get; set; }
-
+        public ClientOrVendor()
+        {
+            this.OrderClient = new HashSet<Order>();
+            this.OrderVendor = new HashSet<Order>();
+        }
         public string Name { get; set; }
 
         public string BULSTAT { get; set; }
 
         //navigation properties
-        public int AddressId { get; set; }
+        public uint AddressId { get; set; }
 
         [ForeignKey(nameof(AddressId))]
         [InverseProperty("ClientOrVendors")]
@@ -20,7 +23,7 @@
 
         [InverseProperty("ClientOrVendor")] public Person ContactPerson { get; set; }
 
-        [InverseProperty("Client")] public ICollection<Order> OrderClient { get; set; } = new List<Order>();
-        [InverseProperty("Vendor")] public ICollection<Order> OrderVendor { get; set; } = new List<Order>();
+        [InverseProperty("Client")] public ICollection<Order> OrderClient { get; set; }
+        [InverseProperty("Vendor")] public ICollection<Order> OrderVendor { get; set; }
     }
 }

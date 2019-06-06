@@ -8,7 +8,7 @@
     {
         public void Configure(EntityTypeBuilder<Address> builder)
         {
-            builder.HasKey(a => a.AddressId);
+            builder.HasKey(a => a.Id);
 
             builder.Property(a => a.AddressText)
                 .HasMaxLength(250)
@@ -17,7 +17,7 @@
 
             builder.HasOne(a => a.Town)
                 .WithMany(t => t.Addresses)
-                .HasForeignKey(a => a.TownId)
+                .HasForeignKey(t => t.TownId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

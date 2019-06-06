@@ -21,18 +21,17 @@ namespace BiesPro.Data.Migrations
 
             modelBuilder.Entity("BiesPro.Models.Address", b =>
                 {
-                    b.Property<int>("AddressId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("AddressText")
                         .IsRequired()
                         .HasMaxLength(250)
                         .IsUnicode(true);
 
-                    b.Property<int>("TownId");
+                    b.Property<long>("TownId");
 
-                    b.HasKey("AddressId");
+                    b.HasKey("Id");
 
                     b.HasIndex("TownId");
 
@@ -41,11 +40,10 @@ namespace BiesPro.Data.Migrations
 
             modelBuilder.Entity("BiesPro.Models.ClientOrVendor", b =>
                 {
-                    b.Property<int>("ClientOrVendorId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<int>("AddressId");
+                    b.Property<long>("AddressId");
 
                     b.Property<string>("BULSTAT")
                         .IsRequired()
@@ -57,7 +55,7 @@ namespace BiesPro.Data.Migrations
                         .HasMaxLength(40)
                         .IsUnicode(true);
 
-                    b.HasKey("ClientOrVendorId");
+                    b.HasKey("Id");
 
                     b.HasIndex("AddressId");
 
@@ -66,46 +64,44 @@ namespace BiesPro.Data.Migrations
 
             modelBuilder.Entity("BiesPro.Models.Municipality", b =>
                 {
-                    b.Property<int>("MunicipalityId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
                         .IsUnicode(true);
 
-                    b.HasKey("MunicipalityId");
+                    b.HasKey("Id");
 
                     b.ToTable("Municipalities");
                 });
 
             modelBuilder.Entity("BiesPro.Models.Order", b =>
                 {
-                    b.Property<int>("OrderId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<int>("AddressId");
+                    b.Property<long>("AddressId");
 
-                    b.Property<int>("ClientId");
+                    b.Property<long>("ClientId");
 
                     b.Property<DateTime?>("EndDate");
 
-                    b.Property<int>("OrderDetailId");
+                    b.Property<long>("OrderDetailsId");
 
                     b.Property<DateTime?>("StartDate");
 
-                    b.Property<int>("VendorId");
+                    b.Property<long>("VendorId");
 
-                    b.HasKey("OrderId");
+                    b.HasKey("Id");
 
                     b.HasIndex("AddressId")
                         .IsUnique();
 
                     b.HasIndex("ClientId");
 
-                    b.HasIndex("OrderDetailId")
+                    b.HasIndex("OrderDetailsId")
                         .IsUnique();
 
                     b.HasIndex("VendorId");
@@ -113,28 +109,26 @@ namespace BiesPro.Data.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("BiesPro.Models.OrderDetail", b =>
+            modelBuilder.Entity("BiesPro.Models.OrderDetails", b =>
                 {
-                    b.Property<int>("OrderDetailId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .IsUnicode(true);
 
-                    b.HasKey("OrderDetailId");
+                    b.HasKey("Id");
 
                     b.ToTable("OrdersDetails");
                 });
 
             modelBuilder.Entity("BiesPro.Models.Person", b =>
                 {
-                    b.Property<int>("PersonId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<int>("ClientOrVendorId");
+                    b.Property<long>("ClientOrVendorId");
 
                     b.Property<string>("EGN")
                         .IsRequired()
@@ -156,7 +150,7 @@ namespace BiesPro.Data.Migrations
                         .HasMaxLength(20)
                         .IsUnicode(false);
 
-                    b.HasKey("PersonId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ClientOrVendorId")
                         .IsUnique();
@@ -166,18 +160,17 @@ namespace BiesPro.Data.Migrations
 
             modelBuilder.Entity("BiesPro.Models.Town", b =>
                 {
-                    b.Property<int>("TownId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<int>("MunicipalityId");
+                    b.Property<long>("MunicipalityId");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
                         .IsUnicode(true);
 
-                    b.HasKey("TownId");
+                    b.HasKey("Id");
 
                     b.HasIndex("MunicipalityId");
 
@@ -212,9 +205,9 @@ namespace BiesPro.Data.Migrations
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("BiesPro.Models.OrderDetail", "OrderDetails")
+                    b.HasOne("BiesPro.Models.OrderDetails", "OrderDetails")
                         .WithOne("Order")
-                        .HasForeignKey("BiesPro.Models.Order", "OrderDetailId")
+                        .HasForeignKey("BiesPro.Models.Order", "OrderDetailsId")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("BiesPro.Models.ClientOrVendor", "Vendor")

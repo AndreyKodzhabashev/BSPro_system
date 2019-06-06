@@ -8,7 +8,7 @@
     {
         public void Configure(EntityTypeBuilder<Municipality> builder)
         {
-            builder.HasKey(m => m.MunicipalityId);
+            builder.HasKey(m => m.Id);
 
             builder.Property(m => m.Name)
                 .HasMaxLength(50)

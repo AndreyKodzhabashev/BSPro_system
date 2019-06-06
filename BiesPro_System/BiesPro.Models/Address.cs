@@ -3,19 +3,17 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public class Address
+    public class Address : BaseModel
     {
         public Address()
         {
-            this.ClientOrVendors = new List<ClientOrVendor>();
+            this.ClientOrVendors = new HashSet<ClientOrVendor>();
         }
-
-        public int AddressId { get; set; }
-
+              
         public string AddressText { get; set; }
 
         //navigation properties
-        public int TownId { get; set; }
+        public uint TownId { get; set; }
         public Town Town { get; set; }
 
 

@@ -9,7 +9,7 @@
     {
         public void Configure(EntityTypeBuilder<Person> builder)
         {
-            builder.HasKey(p => p.PersonId);
+            builder.HasKey(p => p.Id);
 
             builder.Property(p => p.FirstName)
                 .HasMaxLength(20)

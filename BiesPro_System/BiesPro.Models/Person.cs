@@ -2,10 +2,9 @@
 {
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public class Person
+    public class Person : BaseModel
     {
-        public int PersonId { get; set; }
-
+       
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
@@ -16,7 +15,7 @@
 
 
         //nav property one-to-one with the corresponding ClientOrVendor
-        public int ClientOrVendorId { get; set; }
+        public uint ClientOrVendorId { get; set; }
 
         [ForeignKey(nameof(ClientOrVendorId))]
         [InverseProperty("ContactPerson")]
